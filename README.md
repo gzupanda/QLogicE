@@ -9,7 +9,7 @@ First clone the repository:
 git clone https://github.com/gzupanda/QLogicE.git
 ```
 
-The code depends on PyTorch1.1.0 and Python 3.
+The code depends on PyTorch1.1.0 or later verions and Python 3.
 
 ## Run the experiments
 There are seven directories in this repository. They are devided as three groups. Fortunately, the running is simple. For every dataset, we just run the following steps and take the dataset umls for example:
