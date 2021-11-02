@@ -1,5 +1,4 @@
-# QLogicE: Quantum Logic Empowered Embedding forKnowledge Graph Completion
-
+# The model QLogicE
 This repository contains the code of the main experiments presented in the papers:
 
 ## Install 
