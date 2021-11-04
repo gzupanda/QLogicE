@@ -1,18 +1,17 @@
 # The model QLogicE
-This repository contains the code of the main experiments presented in the papers:
 
+This repository is the implement codes for the model QLogicE. This model joints the translation embedding \emph{TransE} and the quantum logic \emph{E2R} for the sake of capture more features to improve the expressiveness of the knowledge graph completion. 
 ## Install 
 
-First clone the repository:
+Firstly, clone the code from the github repository by following command:
 ```
 git clone https://github.com/gzupanda/QLogicE.git
 ```
-
-The code depends on PyTorch1.1.0 or later verions and Python 3.
-
+The code mainly depends on PyTorch1.1.0 or later verions and Python 3. In this code, there are seven directories corresponding to each dataset. In other words, every directory is an independent one with the model codes. To better understand how to quick start to run the experiments, we take the dataset UMLS corresponding one for example.
 ## Run the experiments
 There are seven directories in this repository. They are devided as three groups. Fortunately, the running is simple. For every dataset, we just run the following steps and take the dataset umls for example:
 ### 1. enter the directory
+In every directory, 
 ```
 cd QLogicE
 cd umls
