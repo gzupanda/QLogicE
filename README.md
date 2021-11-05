@@ -48,6 +48,7 @@ In this model, the proposed model achieves outstanding results, especially on th
 |HolE|0.800|75.85|86.78|0.938|93.11|94.94|0.303|21.37|47.64|0.432|40.28|48.79|0.502|41.84|65.19|
 |TuckER|0.788|72.89|88.88|$\mathbf{0.951}$|$\mathbf{94.64}$|$\underline{95.80}$|$\underline{0.352}$|$\underline{25.90}$|$\underline{53.61}$|0.459|42.95|51.40|0.544|46.56|68.09|
 |QLogicE|$\mathbf{0.969}$|$\mathbf{96.93}$|$\mathbf{96.93}$|0.914|91.42|91.42|$\mathbf{0.949}$|$\mathbf{94.89}$|$\mathbf{94.89}$|$\mathbf{0.928}$|$\mathbf{92.79}$|$\mathbf{92.79}$|$\mathbf{0.937}$|$\mathbf{93.74}$|$\mathbf{93.74}$|
+
 From this table, we can see that the proposed model achieves the state-of-the-art over the existing models. Notably, the performance on dateset WN18 is not as promsing as the models achieved, though the model achieve the outstanding performance on other datasets such as FB15k, FB15k237 and WN18RR. Fortunately, these performance results are better than the baseline model E2R with large margin on dataset WN18. The ablation performance results show this point.
 |Model|FB15k|FB15k|FB15k|WN18|WN18|WN18|FB15k237|FB15k237|FB15k237|WN18RR|WN18RR|WN18RR|YAGO3-10|YAGO3-10|YAGO3-10|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
@@ -55,6 +56,7 @@ From this table, we can see that the proposed model achieves the state-of-the-ar
 TransE|0.628|49.36|84.73|0.646|40.56|$\mathbf{94.87}$|0.310|21.72|49.65|0.206|2.79|49.52|0.501|40.57|67.39|
 |E2R|0.964|96.40|96.40|0.710|71.10|71.10|0.584|58.40|58.40|0.477|47.70|47.70|0.830|83.00|83.00|
 |QLogicE|$\mathbf{0.969}$|$\mathbf{96.93}$|$\mathbf{96.93}$|$\mathbf{0.927}$|$\mathbf{92.70}$|92.70|$\mathbf{0.949}$|$\mathbf{94.89}$|$\mathbf{94.89}$|$\mathbf{0.928}$|$\mathbf{92.79}$|$\mathbf{92.79}$|$\mathbf{0.937}$|$\mathbf{93.74}$|$\mathbf{93.74}$|
+
 From this table, it can be seen that the proposed model significant better than the baselines model on datasets except WN18.
 ## Dense Feature Model
 Inspired by the surprise performance of the model QLogicE, we coformulate a dense feature model framework from the perspective of information theory to guide the further knowledge graph completion model design. The key conception of it is expressive density, it is the criterion of dense feature model and we compute out the critical value for this end. It also show that how much room to be improved for a model on a specific dataset.
