@@ -1,33 +1,55 @@
 # The Model QLogicE
 
-This repository is the implement codes for the model QLogicE. This model joints the translation embedding TransE and the quantum logic E2R for the sake of capture more features to improve the expressiveness of the knowledge graph completion. 
-## Install the Code 
+This repository is the implementation codes for the model `QLogicE`. This model joints the translation embedding `TransE` and the quantum logic `E2R` for the sake of capturing more features to improve the expressiveness of the knowledge graph completion task. 
+## Download the Code 
 
-Firstly, clone the code from the github repository by following command:
+Firstly, the code can be cloned from the github repository by following command:
 ```
 git clone https://github.com/gzupanda/QLogicE.git
 ```
-The code mainly depends on PyTorch1.1.0 or later verions and Python 3. In this code, there are seven directories corresponding to each dataset. In other words, every directory is an independent one with the model codes. To better understand how to quick start to run the experiments, we take the dataset UMLS corresponding one for example.
+The code mainly depends on `PyTorch 1.1.0` or later versions and `Python 3` which is modified from the baseline model [E2R](https://github.com/IBM/e2r). In this code, there are seven directories corresponding to each dataset. 
+
+## Datasets for Evalating the Model
+The datasets used in our experiments are as follows.
+|Dataset|Entity|Relation|Train|Valid|Test|Triples|
+|-------|------|--------|-----|-----|----|-------|
+|Kinship|104|26|8,544|1,068|1,074|10,686|
+|UMLS|135|49|5,216|652|661|6,529|
+|FB15k|14,951|1,345|483,142|50,000|59,071|592,213|
+|WN18|40,943|18|141,442|5,000|5,000|151,442|
+|FB15k237|14,505|237|272,115|17,535|20,466|310,116|
+|WN18RR|40,943|11|86,835|3,034|3,134|93,003|
+|YAGO3-10|123,182|37|1,079,040|5,000|5,000|1,089,040|
+
+In other words, every directory is an independent one with the data such as training, validing testing and trained model data. Besides, there are codes including data parser, training, testing, evaluating, etc. To better understand how to quick start to run the experiments, we take the dataset `UMLS` for example.
 ## Run the Experiments
-There are seven directories in this repository. They are devided as three groups. Fortunately, the running is simple. For every dataset, we just run the following steps and take the dataset umls for example:
+There are seven directories in this repository corresponding the seven datasets. They are devided as three groups, . Fortunately, the running is simple. For every dataset, we just run the following steps and take the dataset `umls` for example:
 ### 1. Enter the Directory
-In every directory, there are 8 python files and 2 directories. We can go into the objective directory to run the right codes. In this case, it is the directory unls.
+In every directory, there are eight python files and two directories. We can go into the objective directory to run the right codes. In this case, it is the directory `unls`.
 ```
 cd QLogicE
 cd umls
 ```
-### 2. Training
-When we finish the above step, we can run the following command to training the dataset. And the trained model is saved in the directory save. In this case, it is the dataset UMLS.
+### 2. Training the Model
+When we finish the above step, we can run the following command to training the dataset. And the trained model is saved in the directory save. In this case, it is the dataset `UMLS`.
 ```
 python reasonE.train.py
 ```
-### 3. Testing
+### 3. Testing the Model
 In this step, the code is used for test the training results. We only need to run the followinng command.
 ```
 python reasonE.test.py
 ```
-## The Performance of the Results
-In this model, the proposed model achieves outstanding results, especially on the challenging datasets such as fb15k237, wn18rr and yago3-10.
+
+|Model|FB15k|FB15k|FB15k|WN18|WN18|WN18|FB15k237|FB15k237|FB15k237|WN18RR|WN18RR|WN18RR|YAGO3-10|YAGO3-10|YAGO3-10|
+|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+|MRR| Hits@1| Hits@10| MRR| Hits@1| Hits@10| MRR| Hits@1| Hits@10| MRR| Hits@1| Hits@10| MRR| Hits@1| Hits@10|
+TransE|0.628|49.36|84.73|0.646|40.56|94.87|0.310|21.72|49.65|0.206|2.79|49.52|0.501|40.57|67.39|
+|E2R|0.964|96.40|96.40|0.710|71.10|71.10|0.584|58.40|58.40|0.477|47.70|47.70|0.830|83.00|83.00|
+|QLogicE|0.969|96.93|96.93|0.927|92.70|92.70|0.949|94.89|94.89|0.928|92.79|92.79|0.937|93.74|93.74|
+
+## Performance of the Results
+In this model, the proposed model achieves outstanding results, especially on the challenging datasets such as `FB15k237`, `WN18RR` and `YAGO3-10`.
 |Model|FB15k|FB15k|FB15k|WN18|WN18|WN18|FB15k237|FB15k237|FB15k237|WN18RR|WN18RR|WN18RR|YAGO3-10|YAGO3-10|YAGO3-10|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 |MRR| Hits@1| Hits@10| MRR| Hits@1| Hits@10| MRR| Hits@1| Hits@10| MRR| Hits@1| Hits@10| MRR| Hits@1| Hits@10|
@@ -49,18 +71,11 @@ In this model, the proposed model achieves outstanding results, especially on th
 |TuckER|0.788|72.89|88.88|0.951|94.64|95.80|0.352|25.90|53.61|0.459|42.95|51.40|0.544|46.56|68.09|
 |QLogicE|0.969|96.93|96.93|0.914|91.42|91.42|0.949|94.89|94.89|0.928|92.79|92.79|0.937|93.74|93.74|
 
-From this table, we can see that the proposed model achieves the state-of-the-art over the existing models. Notably, the performance on dateset WN18 is not as promsing as the models achieved, though the model achieve the outstanding performance on other datasets such as FB15k, FB15k237 and WN18RR. Fortunately, these performance results are better than the baseline model E2R with large margin on dataset WN18. The ablation performance results show this point.
+From this table, we can see that the proposed model `QLogicE` achieves the state-of-the-art over the existing models. Notably, the performance on dateset `WN18` is not as promsing as the models achieved, though the model achieve the outstanding performance on other datasets such as `FB15k`, `FB15k237` and `WN18RR`. Fortunately, these performance results are better than the baseline model `E2R` with large margin on dataset `WN18`. The ablation performance results show this point.
 
-|Model|FB15k|FB15k|FB15k|WN18|WN18|WN18|FB15k237|FB15k237|FB15k237|WN18RR|WN18RR|WN18RR|YAGO3-10|YAGO3-10|YAGO3-10|
-|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-|MRR| Hits@1| Hits@10| MRR| Hits@1| Hits@10| MRR| Hits@1| Hits@10| MRR| Hits@1| Hits@10| MRR| Hits@1| Hits@10|
-TransE|0.628|49.36|84.73|0.646|40.56|94.87|0.310|21.72|49.65|0.206|2.79|49.52|0.501|40.57|67.39|
-|E2R|0.964|96.40|96.40|0.710|71.10|71.10|0.584|58.40|58.40|0.477|47.70|47.70|0.830|83.00|83.00|
-|QLogicE|0.969|96.93|96.93|0.927|92.70|92.70|0.949|94.89|94.89|0.928|92.79|92.79|0.937|93.74|93.74|
-
-From this table, it can be seen that the proposed model significant better than the baselines model on datasets except WN18.
+From this table, it can be seen that the proposed model significant better than the baselines model on datasets except `WN18`.
 ## The Dense Feature Model
-Inspired by the surprise performance of the model QLogicE, we coformulate a dense feature model framework from the perspective of information theory to guide the further knowledge graph completion model design. The key conception of it is expressive density, it is the criterion of dense feature model and we compute out the critical value for this end. It also show that how much room to be improved for a model on a specific dataset.
+Inspired by the surprising performance of the model `QLogicE`, we coformulate a dense feature model framework from the perspective of information theory to guide the further knowledge graph completion model design. The key conception of it is expressive density, it is the criterion of dense feature model and we compute out the critical value for this end. It also show that how much room to be improved for a model on a specific dataset.
 ## The Triples Data
 In the directories of datasets `FB15k237`, `WN18RR` and `YAGO3-10`, there are text file named `triples` in corresponding directories. This file including the all triples from training set, validing set and testing set. This is because our model runs under the assumption of close world, the entity and relation out of knowledge graph are incapable of link predicting.
 
