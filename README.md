@@ -8,25 +8,25 @@ Firstly, clone the code from the github repository by following command:
 git clone https://github.com/gzupanda/QLogicE.git
 ```
 The code mainly depends on PyTorch1.1.0 or later verions and Python 3. In this code, there are seven directories corresponding to each dataset. In other words, every directory is an independent one with the model codes. To better understand how to quick start to run the experiments, we take the dataset UMLS corresponding one for example.
-## Run the experiments
+## Run the Experiments
 There are seven directories in this repository. They are devided as three groups. Fortunately, the running is simple. For every dataset, we just run the following steps and take the dataset umls for example:
-### 1. enter the directory
+### 1. Enter the Directory
 In every directory, there are 8 python files and 2 directories. We can go into the objective directory to run the right codes. In this case, it is the directory unls.
 ```
 cd QLogicE
 cd umls
 ```
-### 2. training
+### 2. Training
 When we finish the above step, we can run the following command to training the dataset. And the trained model is saved in the directory save. In this case, it is the dataset UMLS.
 ```
 python reasonE.train.py
 ```
-### 3. testing
+### 3. Testing
 In this step, the code is used for test the training results. We only need to run the followinng command.
 ```
 python reasonE.test.py
 ```
-## the partial result
+## The Performance of the Results
 In this model, the proposed model achieves outstanding results, especially on the challenging datasets such as fb15k237, wn18rr and yago3-10.
 |Model|FB15k|FB15k|FB15k|WN18|WN18|WN18|FB15k237|FB15k237|FB15k237|WN18RR|WN18RR|WN18RR|YAGO3-10|YAGO3-10|YAGO3-10|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
