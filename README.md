@@ -59,7 +59,7 @@ TransE|0.628|49.36|84.73|0.646|40.56|94.87|0.310|21.72|49.65|0.206|2.79|49.52|0.
 |QLogicE|0.969|96.93|96.93|0.927|92.70|92.70|0.949|94.89|94.89|0.928|92.79|92.79|0.937|93.74|93.74|
 
 From this table, it can be seen that the proposed model significant better than the baselines model on datasets except WN18.
-## Dense Feature Model
+## The Dense Feature Model
 Inspired by the surprise performance of the model QLogicE, we coformulate a dense feature model framework from the perspective of information theory to guide the further knowledge graph completion model design. The key conception of it is expressive density, it is the criterion of dense feature model and we compute out the critical value for this end. It also show that how much room to be improved for a model on a specific dataset.
 ## The Triples Data
 In the datasets fb15k237, wn18rr and yago3-10, there are a text file name triples. This file including the all triples in training set, validing set and testing set. This is because our model is under the assumption of close world, the entity and relation out of knowledge graph is incapable of link predicting.
