@@ -62,7 +62,7 @@ From this table, it can be seen that the proposed model significant better than 
 ## The Dense Feature Model
 Inspired by the surprise performance of the model QLogicE, we coformulate a dense feature model framework from the perspective of information theory to guide the further knowledge graph completion model design. The key conception of it is expressive density, it is the criterion of dense feature model and we compute out the critical value for this end. It also show that how much room to be improved for a model on a specific dataset.
 ## The Triples Data
-In the directories of datasets `FB15k237`, `WN18RR` and `YAGO3-10`, there are text file named $\mathbf{triples}$ in corresponding directories. This file including the all triples in training set, validing set and testing set. This is because our model is under the assumption of close world, the entity and relation out of knowledge graph is incapable of link predicting.
+In the directories of datasets `FB15k237`, `WN18RR` and `YAGO3-10`, there are text file named `triples` in corresponding directories. This file including the all triples from training set, validing set and testing set. This is because our model runs under the assumption of close world, the entity and relation out of knowledge graph are incapable of link predicting.
 
 ## License
 
