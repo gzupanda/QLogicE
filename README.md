@@ -40,14 +40,14 @@ In this model, the proposed model achieves outstanding results, especially on th
 |STransE|0.543|39.77|79.60|0.656|43.12|93.45|0.315|22.48|49.56|0.226|10.13|42.21|0.049|3.28|7.35|
 |CrossE|0.702|60.08|86.23|0.834|73.28|95.03|0.298|21.21|47.05|0.405|38.07|44.99|0.446|33.09|65.45|
 |TorusE|0.746|68.85|83.98|0.947|94.33|95.44|0.281|19.62|44.71|$\underline{0.463}$|42.68|53.35|0.342|27.43|47.44|
-|RotatE|0.791|73.93|88.10|$\underline{0.949}$|94.43|$\mathbf{96.02}$|0.336|23.83|53.06|0.475|42.60|$\underline{57.35}$|0.498|40.52|67.07|
+|RotatE|0.791|73.93|88.10|\underline{0.949}|94.43|$\mathbf{96.02}$|0.336|23.83|53.06|0.475|42.60|$\underline{57.35}$|0.498|40.52|67.07|
 |DistMult|0.784|73.68|86.32|0.824|72.60|94.61|0.313|22.44|49.01|0.433|39.68|50.22|0.501|41.26|66.12|
 |ComplEx|$\underline{0.848}$|$\underline{81.56}$|$\underline{90.53}$|0.949|94.53|95.50|0.349|25.72|52.97|0.458|42.55|52.12|$\underline{0.576}$|$\underline{50.48}$|$\underline{70.35}$|
 |Analogy|0.726|65.59|83.74|0.934|92.61|94.42|0.202|12.59|35.38|0.366|35.82|38.00|0.283|19.21|45.65|
 |SimplE|0.726|66.13|83.63|0.938|93.25|94.58|0.179|10.03|34.35|0.398|38.27|42.65|0.453|35.76|63.16|
 |HolE|0.800|75.85|86.78|0.938|93.11|94.94|0.303|21.37|47.64|0.432|40.28|48.79|0.502|41.84|65.19|
 |TuckER|0.788|72.89|88.88|$\mathbf{0.951}$|$\mathbf{94.64}$|$\underline{95.80}$|$\underline{0.352}$|$\underline{25.90}$|$\underline{53.61}$|0.459|42.95|51.40|0.544|46.56|68.09|
-|QLogicE|$\mathbf{0.969}$|$\mathbf{96.93}$|$\mathbf{96.93}$|0.914|91.42|91.42|$\mathbf{0.949}$|$\mathbf{94.89}$|$\mathbf{94.89}$|$\mathbf{0.928}$|$\mathbf{92.79}$|$\mathbf{92.79}$|$\mathbf{0.937}$|$\mathbf{93.74}$|$\mathbf{93.74}$
+|QLogicE|$\mathbf{0.969}$|$\mathbf{96.93}$|$\mathbf{96.93}$|0.914|91.42|91.42|$\mathbf{0.949}$|$\mathbf{94.89}$|$\mathbf{94.89}$|$\mathbf{0.928}$|$\mathbf{92.79}$|$\mathbf{92.79}$|$\mathbf{0.937}$|$\mathbf{93.74}$|$\mathbf{93.74}$|
 From this table, we can see that the proposed model achieves the state-of-the-art over the existing models. Notably, the performance on dateset WN18 is not as promsing as the models achieved, though the model achieve the outstanding performance on other datasets such as FB15k, FB15k237 and WN18RR. Fortunately, these performance results are better than the baseline model E2R with large margin on dataset WN18. The ablation performance results show this point.
 |Model|FB15k|FB15k|FB15k|WN18|WN18|WN18|FB15k237|FB15k237|FB15k237|WN18RR|WN18RR|WN18RR|YAGO3-10|YAGO3-10|YAGO3-10|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
