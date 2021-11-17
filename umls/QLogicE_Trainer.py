@@ -98,7 +98,7 @@ class ModelTrainer:
         accLoss += loss.item()
         accCount += 1
         c = accCount
-        print('iter='+str(it)+' :', 'overall loss='+'{:.4f}'.format(accLoss/c)+',', 'bE2CMember='+'{:.4f}'.format(bE2CMemberAccLoss/c)+',', 'bE2CDiscMember='+'{:.4f}'.format(bE2CDiscMemberAccLoss/c)+',', 'TransELoss='+'{:.4f}'.format(TransELoss/c))
+        print('Epoch='+str(it)+' :', 'LQLogicE='+'{:.4f}'.format(accLoss/c)+',', 'LPositive='+'{:.4f}'.format(bE2CMemberAccLoss/c)+',', 'LNegative='+'{:.4f}'.format(bE2CDiscMemberAccLoss/c)+',', 'LTransE='+'{:.4f}'.format(TransELoss/c))
 
       accLoss /= accCount
       bE2CMemberAccLoss /= accCount

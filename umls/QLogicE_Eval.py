@@ -252,19 +252,20 @@ class ModelEval:
       candidateLstLen = 0
       for testTrueMember in testTrueMembers:
         candidateLst = self.getBClassMembershipHCandidateList(testTrueMember, allTrueMembers, entityLst)
+        print(candidateLst)
         candidateLstLen += len(candidateLst)
         scoreLst = self.getBClassSpaceMembershipScore(self.getBClassSpace(c), candidateLst)
+        #print(scoreLst)
         rankLst = self.accObj.getRankList(scoreLst)
-        print(rankLst[0:135])
         rank = numpy.where(rankLst==0)[0][0] + 1
         print('Head Ranking:',rank)
         ranks.append(rank)
         allRanks.append(rank)
         candidateLst = self.getBClassMembershipTCandidateList(testTrueMember, allTrueMembers, entityLst)
+        print(candidateLstLen)
         candidateLstLen += len(candidateLst)
         scoreLst = self.getBClassSpaceMembershipScore(self.getBClassSpace(c), candidateLst)
         rankLst = self.accObj.getRankList(scoreLst)
-        print(rankLst[0:135])
         rank = numpy.where(rankLst==0)[0][0] + 1
         print('Tail Ranking:', rank)
         ranks.append(rank)
