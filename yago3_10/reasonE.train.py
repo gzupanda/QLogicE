@@ -11,7 +11,7 @@ import data
 import time
 import importlib
 start = time.time()
-modelTrainer = importlib.machinery.SourceFileLoader('model.trainer', 'model.trainer.py').load_module()
+modelTrainer = importlib.machinery.SourceFileLoader('model.trainer', 'QLogicE_Trainer.py').load_module()
 
 
 def getTrainParams():

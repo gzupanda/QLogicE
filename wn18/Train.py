@@ -7,11 +7,11 @@ import torch
 import torch.nn as nn
 from torch.autograd import Variable
 
-import data
+import Data
 import time
 import importlib
 start = time.time()
-modelTrainer = importlib.machinery.SourceFileLoader('model.trainer', 'model.trainer.py').load_module()
+modelTrainer = importlib.machinery.SourceFileLoader('model.trainer', 'QLogicE_Trainer.py').load_module()
 
 
 def getTrainParams():
@@ -40,7 +40,7 @@ if __name__ == '__main__':
   print(' ','fresh training')
   print(' ',str(nIters)+' iters to do now')
 
-  dataObj = data.WnReasonData(dataPath, negSampleSizeRatio)
+  dataObj = Data.WnReasonData(dataPath, negSampleSizeRatio)
   sys.stdout.flush()
 
   trainer = modelTrainer.ModelTrainer(dataObj, dataObj.getEntityCount(), dataObj.getUConceptCount(), dataObj.getBConceptCount(), embedDim)

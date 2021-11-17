@@ -12,8 +12,8 @@ import time
 import importlib
 
 start = time.time()
-train = importlib.machinery.SourceFileLoader('reasonE.train', 'reasonE.train.py').load_module()
-modelEval = importlib.machinery.SourceFileLoader('model.eval', 'model.eval.py').load_module()
+train = importlib.machinery.SourceFileLoader('reasonE.train', 'Train.py').load_module()
+modelEval = importlib.machinery.SourceFileLoader('model.eval', 'QLogicE_Eval.py').load_module()
 
 
 ###

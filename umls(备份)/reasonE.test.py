@@ -9,10 +9,10 @@ from torch.autograd import Variable
 
 import data
 import time
-import importlib
+import imp
 start = time.time()
-train = importlib.machinery.SourceFileLoader('reasonE.train', 'Train.py').load_module()
-modelEval = importlib.machinery.SourceFileLoader('model.eval', 'QLogicE_Eval.py').load_module()
+train = imp.load_source('reasonE.train', 'reasonE.train.py')
+modelEval = imp.load_source('model.eval', 'model.eval.py')
 
 
 ###
@@ -20,9 +20,9 @@ modelEval = importlib.machinery.SourceFileLoader('model.eval', 'QLogicE_Eval.py'
 if __name__ == '__main__':
 
   dataPath, modelSavePath, modelSaveNamePrefix, embedDim, lossMargin, negSampleSizeRatio = train.getTrainParams()
-  modelSaveNamePrefix = 'model7'
+  modelSaveNamePrefix = 'model3'
 
-  batchSize = 86835
+  batchSize = 2500
 
   print('Loading data...')
   sys.stdout.flush()
@@ -46,4 +46,5 @@ if __name__ == '__main__':
   evalObj.evalModel()
 
 end = time.time()
-print("Testing time on FB15k237 is %s second"%(end - start))
+print("Testing time on UMLS is %s seconds"%(end - start))
+

@@ -9,9 +9,9 @@ from torch.autograd import Variable
 
 import data
 import time
-import importlib
+import imp
 start = time.time()
-modelTrainer = importlib.machinery.SourceFileLoader('model.trainer', 'QLogicE_Trainer.py').load_module()
+modelTrainer = imp.load_source('model.trainer', 'model.trainer.py')
 
 
 def getTrainParams():
@@ -22,7 +22,7 @@ def getTrainParams():
 
 dataPath = 'data/'
 modelSavePath = 'model/'
-modelSaveNamePrefix = 'model2'
+modelSaveNamePrefix = 'model3'
 embedDim = 4
 lossMargin = 2
 negSampleSizeRatio = 1
@@ -32,10 +32,8 @@ if __name__ == '__main__':
   dataPath, modelSavePath, modelSaveNamePrefix, embedDim, lossMargin, negSampleSizeRatio = getTrainParams()
 
   learningRate = 0.2
-  
   nIters = 1000
-  batchSize = 90705
-
+  batchSize = 2500
 
   print('Training...')
   print(' ','fresh training')
@@ -58,8 +56,6 @@ if __name__ == '__main__':
   with open(modelSavePath+'/'+modelSaveNamePrefix+'.'+'nIters', 'w') as f:
     f.write("%s\n" % str(nIters))
     f.close()
-  
+
 end = time.time()
-print("Training time on FB15k237 is %s seconds."%(end - start))
-
-
+print("Training time on UMLS is %s seconds"%(end - start))

@@ -7,11 +7,12 @@ import torch
 import torch.nn as nn
 from torch.autograd import Variable
 
-import data
+import Data
 import time
-import imp
+import importlib
 start = time.time()
-modelTrainer = imp.load_source('model.trainer', 'model.trainer.py')
+#modelTrainer = imp.load_source('model.trainer', 'QLogicE_Trainer.py')
+modelTrainer = importlib.machinery.SourceFileLoader('QLogicE_Trainer', 'QLogicE_Trainer.py').load_module()
 
 
 def getTrainParams():
@@ -35,11 +36,10 @@ if __name__ == '__main__':
   nIters = 1000
   batchSize = 2500
 
-  print('Training...')
-  print(' ','fresh training')
-  print(' ',str(nIters)+' iters to do now')
+  print('Start to train...')
+  print('It will run', str(nIters)+' epochs.')
 
-  dataObj = data.WnReasonData(dataPath, negSampleSizeRatio)
+  dataObj = Data.WnReasonData(dataPath, negSampleSizeRatio)
   sys.stdout.flush()
 
   trainer = modelTrainer.ModelTrainer(dataObj, dataObj.getEntityCount(), dataObj.getUConceptCount(), dataObj.getBConceptCount(), embedDim)
@@ -58,4 +58,4 @@ if __name__ == '__main__':
     f.close()
 
 end = time.time()
-print("Training time on UMLS is %s seconds"%(end - start))
+#print("Training time on UMLS is %s seconds"%(end - start))

@@ -7,13 +7,14 @@ import torch
 import torch.nn as nn
 from torch.autograd import Variable
 
-import data
+import Data
 import time
-import imp
+import importlib
 start = time.time()
-train = imp.load_source('reasonE.train', 'reasonE.train.py')
-modelEval = imp.load_source('model.eval', 'model.eval.py')
-
+#train = imp.load_source('Train', 'Train.py')
+train = importlib.machinery.SourceFileLoader('Train', 'Train.py').load_module()
+#modelEval = imp.load_source('QLogicE_Eval', 'QLogicE_Eval.py')
+modelEval = importlib.machinery.SourceFileLoader('QLogicE_Eval', 'QLogicE_Eval.py').load_module()
 
 ###
 
@@ -26,7 +27,7 @@ if __name__ == '__main__':
 
   print('Loading data...')
   sys.stdout.flush()
-  dataObj = data.WnReasonData(dataPath, negSampleSizeRatio, modelSavePath, modelSaveNamePrefix)
+  dataObj = Data.WnReasonData(dataPath, negSampleSizeRatio, modelSavePath, modelSaveNamePrefix)
   entityCount = dataObj.getEntityCount()
   uConceptCount = dataObj.getUConceptCount()
   bConceptCount = dataObj.getBConceptCount()
@@ -45,6 +46,6 @@ if __name__ == '__main__':
   evalObj.loadModel(modelSavePath, modelSaveNamePrefix, str(nIters))
   evalObj.evalModel()
 
-end = time.time()
-print("Testing time on UMLS is %s seconds"%(end - start))
+#end = time.time()
+#print("Testing time on UMLS is %s seconds"%(end - start))
 

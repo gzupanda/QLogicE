@@ -7,7 +7,7 @@ import torch.nn as nn
 from torch.autograd import Variable
 import torch.nn.functional as F
 
-import accuracy
+import Accuracy
 
 
 class ModelEval:
@@ -34,7 +34,7 @@ class ModelEval:
   def evalModel(self):
     self.one = Variable(torch.FloatTensor([1.0]))
     self.one = self.one.to(self.device)
-    self.accObj = accuracy.Accuracy()
+    self.accObj = Accuracy.Accuracy()
     self.computeEmbeddingQuality()
 
   def getUClassSpaceMembershipScore(self, uCE, eLst):
@@ -166,14 +166,14 @@ class ModelEval:
     print('Embedding Quality:')
     allBRanks = self.getTestBClassEmbeddingQuality(list(self.dataObj.testBCMemberMap.keys()))
     result = self.accObj.computeMetrics(allBRanks)
-    print(' > Binary Abox Classes')
+    print('Performance Results:')
     print('      ',self.getAccuracyPrintText(result))
-    allRanks = []
-    for r in allBRanks:
-      allRanks.append(r)
-    result = self.accObj.computeMetrics(allRanks)
-    print(' > All Abox Classes')
-    print('      ',self.getAccuracyPrintText(result))
+    # allRanks = []
+    # for r in allBRanks:
+    #   allRanks.append(r)
+    # result = self.accObj.computeMetrics(allRanks)
+    # print(' > All Abox Classes')
+    # print('      ',self.getAccuracyPrintText(result))
 
   def getUClassEmbeddingQuality(self, classLst):
     e2id = self.dataObj.getEntityMap()
@@ -208,7 +208,7 @@ class ModelEval:
     e2id = self.dataObj.getEntityMap()
     bc2id = self.dataObj.getBConceptMap()
     entityLst = list(e2id.values())
-    relationLst = list(uc2id.values())
+    relationLst = list(bc2id.values())
     
     allRanks = []
     allCandidateLstLen = 0 
@@ -229,8 +229,8 @@ class ModelEval:
         allRanks.append(rank)
       allCandidateLstLen += candidateLstLen
       allTrueMembersCount += len(trueMembers)
-      print('   ',self.accObj.computeMetrics(ranks), candidateLstLen/len(trueMembers))
-    print(allCandidateLstLen/allTrueMembersCount)
+      print('   ',self.accObj.computeMetrics(ranks), round(candidateLstLen/len(trueMembers),4))
+    print(round(allCandidateLstLen/allTrueMembersCount,4))
     return allRanks
 
   def getTestBClassEmbeddingQuality(self, classLst):
@@ -239,13 +239,15 @@ class ModelEval:
     entityLst = list(e2id.values())
     relationLst = classLst
 
+    HRanks = []
+    TRanks = []
     allRanks = []
     allCandidateLstLen = 0
     allTrueMembersCount = 0
     for c in classLst:
       testTrueMembers = set(self.dataObj.getTestBClassMembers(c))
       allTrueMembers = set(self.dataObj.getAllBClassMembers(c))
-      print(self.dataObj.id2bc[c], len(testTrueMembers))
+      print('Relation:\n', self.dataObj.id2bc[c], len(testTrueMembers))
       ranks = []
       candidateLstLen = 0
       for testTrueMember in testTrueMembers:
@@ -253,21 +255,26 @@ class ModelEval:
         candidateLstLen += len(candidateLst)
         scoreLst = self.getBClassSpaceMembershipScore(self.getBClassSpace(c), candidateLst)
         rankLst = self.accObj.getRankList(scoreLst)
+        print(rankLst[0:135])
         rank = numpy.where(rankLst==0)[0][0] + 1
+        print('Head Ranking:',rank)
         ranks.append(rank)
         allRanks.append(rank)
         candidateLst = self.getBClassMembershipTCandidateList(testTrueMember, allTrueMembers, entityLst)
         candidateLstLen += len(candidateLst)
         scoreLst = self.getBClassSpaceMembershipScore(self.getBClassSpace(c), candidateLst)
         rankLst = self.accObj.getRankList(scoreLst)
+        print(rankLst[0:135])
         rank = numpy.where(rankLst==0)[0][0] + 1
+        print('Tail Ranking:', rank)
         ranks.append(rank)
         allRanks.append(rank)
       allCandidateLstLen += candidateLstLen
       allTrueMembersCount += 2*len(testTrueMembers)
-      print('   ',self.accObj.computeMetrics(ranks), candidateLstLen/(2*len(testTrueMembers)))
-    print(allCandidateLstLen/allTrueMembersCount)
-    #print("getTestBClassEmbeddingQuality(self, classLst) is runing")
+      print('Metrics:\n',self.accObj.computeMetrics(ranks), round(candidateLstLen/(2*len(testTrueMembers)),2))
+    print('---------------Overall------------------')
+    print('Average Candidates\n',round(allCandidateLstLen/allTrueMembersCount,2))
+    print('---------------Overall------------------')
     return allRanks
 
   def getUClassMembershipCandidateList(self, trueMember, trueMembers, entityLst):
@@ -359,13 +366,13 @@ class ModelEval:
     return rE
 
   def getAccuracyPrintText(self, resObj):
-    retVal = 'MR='+'{:.2f}'.format(resObj['MR'])
-    retVal += ', MRR='+'{:.2f}'.format(resObj['MRR'])
-    retVal += ', Hit@1%='+'{:.2f}'.format(resObj['Hit@1%'])
-    retVal += ', Hit@2%='+'{:.2f}'.format(resObj['Hit@2%'])
-    retVal += ', Hit@3%='+'{:.2f}'.format(resObj['Hit@3%'])
-    retVal += ', Hit@5%='+'{:.2f}'.format(resObj['Hit@5%'])
-    retVal += ', Hit@10%='+'{:.2f}'.format(resObj['Hit@10%'])
+    retVal = 'MR='+'{:.4f}'.format(resObj['MR'])
+    retVal += ', MRR='+'{:.6f}'.format(resObj['MRR'])
+    retVal += ', Hit@1%='+'{:.4f}'.format(resObj['Hit@1%'])
+    #retVal += ', Hit@2%='+'{:.2f}'.format(resObj['Hit@2%'])
+    retVal += ', Hit@3%='+'{:.4f}'.format(resObj['Hit@3%'])
+    #retVal += ', Hit@5%='+'{:.2f}'.format(resObj['Hit@5%'])
+    retVal += ', Hit@10%='+'{:.4f}'.format(resObj['Hit@10%'])
     return retVal
 
 

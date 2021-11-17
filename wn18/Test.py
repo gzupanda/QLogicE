@@ -7,12 +7,12 @@ import torch
 import torch.nn as nn
 from torch.autograd import Variable
 
-import data
+import Data
 import time
 import importlib
 start = time.time()
-train = importlib.machinery.SourceFileLoader('reasonE.train', 'reasonE.train.py').load_module()
-modelEval = importlib.machinery.SourceFileLoader('model.eval', 'model.eval.py').load_module()
+train = importlib.machinery.SourceFileLoader('reasonE.train', 'Train.py').load_module()
+modelEval = importlib.machinery.SourceFileLoader('model.eval', 'QLogicE_Eval.py').load_module()
 
 
 ###
@@ -26,7 +26,7 @@ if __name__ == '__main__':
 
   print('Loading data...')
   sys.stdout.flush()
-  dataObj = data.WnReasonData(dataPath, negSampleSizeRatio, modelSavePath, modelSaveNamePrefix)
+  dataObj = Data.WnReasonData(dataPath, negSampleSizeRatio, modelSavePath, modelSaveNamePrefix)
   entityCount = dataObj.getEntityCount()
   uConceptCount = dataObj.getUConceptCount()
   bConceptCount = dataObj.getBConceptCount()
