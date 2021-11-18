@@ -255,6 +255,7 @@ class ModelEval:
         print(candidateLst)
         candidateLstLen += len(candidateLst)
         scoreLst = self.getBClassSpaceMembershipScore(self.getBClassSpace(c), candidateLst)
+
         #print(scoreLst)
         rankLst = self.accObj.getRankList(scoreLst)
         rank = numpy.where(rankLst==0)[0][0] + 1
