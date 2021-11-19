@@ -26,7 +26,7 @@ if __name__ == '__main__':
   batchSize = 141442
   #batchSize = 10103
 
-  with open(modelSavePath+'/'+modelSaveNamePrefix+'.'+'nIters','r') as f:
+  with open(modelSavePath+'/'+modelSaveNamePrefix+'.'+'epochs','r') as f:
     lst = f.readlines()
     oldNIters = int(lst[0].strip())
     totalNIters = oldNIters + nIters
@@ -48,7 +48,7 @@ if __name__ == '__main__':
 
   trainer.saveModel(modelSavePath, modelSaveNamePrefix, str(totalNIters))
 
-  with open(modelSavePath+'/'+modelSaveNamePrefix+'.'+'nIters', 'w') as f:
+  with open(modelSavePath+'/'+modelSaveNamePrefix+'.'+'epochs', 'w') as f:
     f.write("%s\n" % str(totalNIters))
     f.close()
 

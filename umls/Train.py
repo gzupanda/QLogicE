@@ -23,7 +23,7 @@ def getTrainParams():
 
 dataPath = 'data/'
 modelSavePath = 'model/'
-modelSaveNamePrefix = 'model5'
+modelSaveNamePrefix = 'model3'
 embedDim = 4
 lossMargin = 2
 negSampleSizeRatio = 1
@@ -44,7 +44,7 @@ if __name__ == '__main__':
 
   trainer = modelTrainer.ModelTrainer(dataObj, dataObj.getEntityCount(), dataObj.getUConceptCount(), dataObj.getBConceptCount(), embedDim)
   logF = open(modelSavePath+'/'+modelSaveNamePrefix+'.'+'log', 'w')
-  logF.write('Train: nIters='+str(nIters)+'\n')
+  logF.write('Train: Epochs='+str(nIters)+'\n')
   trainer.init(logF)
   trainer.trainIters(batchSize, learningRate, nIters, lossMargin, logF)
   sys.stdout.flush()
@@ -53,7 +53,7 @@ if __name__ == '__main__':
   trainer.saveModel(modelSavePath, modelSaveNamePrefix, str(nIters))
   dataObj.saveEntityConceptMaps(modelSavePath, modelSaveNamePrefix)
 
-  with open(modelSavePath+'/'+modelSaveNamePrefix+'.'+'nIters', 'w') as f:
+  with open(modelSavePath+'/'+modelSaveNamePrefix+'.'+'epochs', 'w') as f:
     f.write("%s\n" % str(nIters))
     f.close()
 

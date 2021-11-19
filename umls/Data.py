@@ -350,13 +350,13 @@ class WnReasonData:
 
   def saveEntityConceptMaps(self, savePath, saveNamePrefix):
     self.saveIdMap(self.e2id, savePath+'/'+saveNamePrefix+'.entityMap')
-    self.saveIdMap(self.uc2id, savePath+'/'+saveNamePrefix+'.unaryConceptMap')
-    self.saveIdMap(self.bc2id, savePath+'/'+saveNamePrefix+'.binaryConceptMap')
+    self.saveIdMap(self.uc2id, savePath+'/'+saveNamePrefix+'.unaryRelationMap')
+    self.saveIdMap(self.bc2id, savePath+'/'+saveNamePrefix+'.relationMap')
 
   def loadEntityConceptMaps(self, loadPath, loadNamePrefix):
     self.e2id = self.loadIdMap(loadPath+'/'+loadNamePrefix+'.entityMap')
-    self.uc2id = self.loadIdMap(loadPath+'/'+loadNamePrefix+'.unaryConceptMap')
-    self.bc2id = self.loadIdMap(loadPath+'/'+loadNamePrefix+'.binaryConceptMap')
+    self.uc2id = self.loadIdMap(loadPath+'/'+loadNamePrefix+'.unaryRelationMap')
+    self.bc2id = self.loadIdMap(loadPath+'/'+loadNamePrefix+'.relationMap')
 
   def saveIdMap(self, idMap, fileN):
     with open(fileN, 'w') as f:

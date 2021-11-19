@@ -21,7 +21,7 @@ modelEval = importlib.machinery.SourceFileLoader('QLogicE_Eval', 'QLogicE_Eval.p
 if __name__ == '__main__':
 
   dataPath, modelSavePath, modelSaveNamePrefix, embedDim, lossMargin, negSampleSizeRatio = train.getTrainParams()
-  modelSaveNamePrefix = 'model4'
+  modelSaveNamePrefix = 'model3'
 
   batchSize = 2500
 
@@ -33,7 +33,7 @@ if __name__ == '__main__':
   bConceptCount = dataObj.getBConceptCount()
   sys.stdout.flush()
 
-  with open(modelSavePath+'/'+modelSaveNamePrefix+'.'+'nIters','r') as f:
+  with open(modelSavePath+'/'+modelSaveNamePrefix+'.'+'epochs','r') as f:
     lst = f.readlines()
     nIters = int(lst[0].strip())
   nIters = 1000

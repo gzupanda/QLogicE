@@ -109,12 +109,12 @@ class ModelTrainer:
       TransELoss /= accCount
  
   def loadModel(self, modelPath, modelNamePrefix, modelNamePostfix):
-    model = torch.load(modelPath+'/'+modelNamePrefix+'.reasonEModel.'+modelNamePostfix)
-    print('Loaded model '+modelPath+'/'+modelNamePrefix+'.reasonEModel.'+modelNamePostfix)
+    model = torch.load(modelPath+'/'+modelNamePrefix+'.trainedModel.'+modelNamePostfix)
+    print('Loaded model '+modelPath+'/'+modelNamePrefix+'.trainedModel.'+modelNamePostfix)
     return model
 
   def saveModel(self, modelPath, modelNamePrefix, modelNamePostfix):
-    torch.save(self.model, modelPath+'/'+modelNamePrefix+'.reasonEModel.'+modelNamePostfix)
-    print('Saved model '+modelPath+'/'+modelNamePrefix+'.reasonEModel.'+modelNamePostfix)
+    torch.save(self.model, modelPath+'/'+modelNamePrefix+'.trainedModel.'+modelNamePostfix)
+    print('Saved model '+modelPath+'/'+modelNamePrefix+'.trainedModel.'+modelNamePostfix)
 
 
