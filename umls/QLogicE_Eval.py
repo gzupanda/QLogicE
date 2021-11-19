@@ -166,7 +166,7 @@ class ModelEval:
     print('Embedding Quality:')
     allBRanks = self.getTestBClassEmbeddingQuality(list(self.dataObj.testBCMemberMap.keys()))
     result = self.accObj.computeMetrics(allBRanks)
-    print('Performance Results:')
+    print('Performance Examples:')
     print('      ',self.getAccuracyPrintText(result))
     # allRanks = []
     # for r in allBRanks:
@@ -252,19 +252,23 @@ class ModelEval:
       candidateLstLen = 0
       for testTrueMember in testTrueMembers:
         candidateLst = self.getBClassMembershipHCandidateList(testTrueMember, allTrueMembers, entityLst)
+        print(candidateLst)
         candidateLstLen += len(candidateLst)
         scoreLst = self.getBClassSpaceMembershipScore(self.getBClassSpace(c), candidateLst)
+        print(scoreLst)
         rankLst = self.accObj.getRankList(scoreLst)
-        print(rankLst[0:135])
+        print(rankLst)
         rank = numpy.where(rankLst==0)[0][0] + 1
         print('Head Ranking:',rank)
         ranks.append(rank)
         allRanks.append(rank)
         candidateLst = self.getBClassMembershipTCandidateList(testTrueMember, allTrueMembers, entityLst)
+        print(candidateLst)
         candidateLstLen += len(candidateLst)
         scoreLst = self.getBClassSpaceMembershipScore(self.getBClassSpace(c), candidateLst)
+        print(scoreLst)
         rankLst = self.accObj.getRankList(scoreLst)
-        print(rankLst[0:135])
+        print(rankLst)
         rank = numpy.where(rankLst==0)[0][0] + 1
         print('Tail Ranking:', rank)
         ranks.append(rank)

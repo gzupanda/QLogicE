@@ -57,9 +57,9 @@ class Accuracy:
     result['MR'] = round(mr / len(rankAccLst), 4)
     result['MRR'] = round(mrr / len(rankAccLst), 4)
     result['Hit@1%'] = round(r1 * 100.00/len(rankAccLst), 4)
-    result['Hit@2%'] = round(r2 * 100.00/len(rankAccLst), 4)
+    #result['Hit@2%'] = round(r2 * 100.00/len(rankAccLst), 4)
     result['Hit@3%'] = round(r3 * 100.00/len(rankAccLst), 4)
-    result['Hit@5%'] = round(r5 * 100.00/len(rankAccLst), 4)
+    #result['Hit@5%'] = round(r5 * 100.00/len(rankAccLst), 4)
     result['Hit@10%'] = round(r10 * 100.00/len(rankAccLst), 4)
     return result
 
