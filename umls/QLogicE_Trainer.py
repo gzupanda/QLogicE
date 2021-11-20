@@ -1,12 +1,7 @@
 # purpose: model trainer class - to train a new model or load and retrain an existing model on the training data for a specific number of iterations and store the resultant model.
 
-import os, sys
-import numpy
+import sys
 import torch
-import torch.nn as nn
-from torch.autograd import Variable
-import torch.nn.functional as F
-
 import QLogicE
 
 

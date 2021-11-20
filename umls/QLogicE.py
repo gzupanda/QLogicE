@@ -1,7 +1,5 @@
 # purpose: model definition class - to define model and forward step.
 
-import os, sys
-import numpy
 import torch
 import torch.nn as nn
 from torch.autograd import Variable

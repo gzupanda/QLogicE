@@ -1,12 +1,5 @@
 # purpose: data loader class - to process the data and shape it into a form to serve the data specific requirements of the model training and evaluation.
-
-import os, sys, math
 import random
-
-import json
-from pprint import pprint
-import re
-
 import torch
 from torch.autograd import Variable
 

@@ -21,7 +21,7 @@ modelEval = importlib.machinery.SourceFileLoader('QLogicE_Eval', 'QLogicE_Eval.p
 if __name__ == '__main__':
 
   dataPath, modelSavePath, modelSaveNamePrefix, embedDim, lossMargin, negSampleSizeRatio = train.getTrainParams()
-  modelSaveNamePrefix = 'model3'
+  modelSaveNamePrefix = 'model1'
 
   batchSize = 2500
 

@@ -10,9 +10,10 @@ from torch.autograd import Variable
 
 import Data
 
-import imp
-train = imp.load_source('Train', 'Train.py')
-modelTrainer = imp.load_source('QLogicE_Trainer', 'QLogicE_Trainer.py')
+import importlib
+
+train = importlib.machinery.SourceFileLoader('Train', 'Train.py').load_module()
+modelTrainer = importlib.machinery.SourceFileLoader('QLogicE_Trainer', 'QLogicE_Trainer.py').load_module()
 
 
 ###
@@ -24,7 +25,6 @@ if __name__ == '__main__':
   learningRate = 0.00001
   nIters = 3000
   batchSize = 141442
-  #batchSize = 10103
 
   with open(modelSavePath+'/'+modelSaveNamePrefix+'.'+'epochs','r') as f:
     lst = f.readlines()
@@ -32,15 +32,15 @@ if __name__ == '__main__':
     totalNIters = oldNIters + nIters
 
   print('Retraining...')
-  print(' ',str(oldNIters)+' iters so far')
-  print(' ',str(nIters)+' iters to do now')
+  print(' ',str(oldNIters)+' epochs so far')
+  print(' ',str(nIters)+' epochs to do now')
 
   dataObj = Data.WnReasonData(dataPath, negSampleSizeRatio, modelSavePath, modelSaveNamePrefix)
   sys.stdout.flush()
 
   trainer = modelTrainer.ModelTrainer(dataObj, dataObj.getEntityCount(), dataObj.getUConceptCount(), dataObj.getBConceptCount(), embedDim)
   logF = open(modelSavePath+'/'+modelSaveNamePrefix+'.'+'log', 'a')
-  logF.write('Retrain: nIters='+str(nIters)+'\n')
+  logF.write('Retrain: epochs='+str(nIters)+'\n')
   trainer.init(logF, True, modelSavePath, modelSaveNamePrefix, str(oldNIters))
   trainer.trainIters(batchSize, learningRate, nIters, lossMargin, logF)
   sys.stdout.flush()

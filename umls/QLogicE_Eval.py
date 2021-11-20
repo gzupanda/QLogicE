@@ -1,12 +1,9 @@
 # purpose: model evaluation class - to load and evaluate an existing model on the test data and compute accuracy.
 
-import os, sys
+import sys
 import numpy
 import torch
-import torch.nn as nn
 from torch.autograd import Variable
-import torch.nn.functional as F
-
 import Accuracy
 
 
@@ -24,8 +21,8 @@ class ModelEval:
     self.device = device
 
   def loadModel(self, modelPath, modelNamePrefix, modelNamePostfix):
-    self.model = torch.load(modelPath+'/'+modelNamePrefix+'.reasonEModel.'+modelNamePostfix)
-    print('Loaded model '+modelPath+'/'+modelNamePrefix+'.reasonEModel.'+modelNamePostfix)
+    self.model = torch.load(modelPath+'/'+modelNamePrefix+'.trainedModel.'+modelNamePostfix)
+    print('Loaded model '+modelPath+'/'+modelNamePrefix+'.trainedModel.'+modelNamePostfix)
     self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print('Device:', self.device)
     sys.stdout.flush()

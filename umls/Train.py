@@ -23,7 +23,7 @@ def getTrainParams():
 
 dataPath = 'data/'
 modelSavePath = 'model/'
-modelSaveNamePrefix = 'model3'
+modelSaveNamePrefix = 'model1'
 embedDim = 4
 lossMargin = 2
 negSampleSizeRatio = 1
