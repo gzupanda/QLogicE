@@ -33,12 +33,12 @@ cd umls
 ### 2. Training the Model
 When we finish the above step, we can run the following command to training the dataset. And the trained model is saved in the directory save. In this case, it is the dataset `UMLS`.
 ```
-python reasonE.train.py
+python Train.py
 ```
 ### 3. Testing the Model
 In this step, the code is used for test the training results. We only need to run the followinng command.
 ```
-python reasonE.test.py
+python Test.py
 ```
 
 |Model|FB15k|FB15k|FB15k|WN18|WN18|WN18|FB15k237|FB15k237|FB15k237|WN18RR|WN18RR|WN18RR|YAGO3-10|YAGO3-10|YAGO3-10|
