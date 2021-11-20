@@ -1,12 +1,6 @@
 # purpose: top level script to evaluate an existing model on the test data and compute accuracy.
 
-import os, sys, math
-import random
-
-import torch
-import torch.nn as nn
-from torch.autograd import Variable
-
+import sys
 import Data
 import time
 import importlib
@@ -21,7 +15,7 @@ modelEval = importlib.machinery.SourceFileLoader('QLogicE_Eval', 'QLogicE_Eval.p
 if __name__ == '__main__':
 
   dataPath, modelSavePath, modelSaveNamePrefix, embedDim, lossMargin, negSampleSizeRatio = train.getTrainParams()
-  modelSaveNamePrefix = 'model1'
+  modelSaveNamePrefix = 'model4'
 
   batchSize = 2500
 

@@ -1,15 +1,7 @@
 # purpose: top level script to retrain an existing model for the specified set of parameters.
 
-import os, sys, math
-import random
-import importlib
-
-import torch
-import torch.nn as nn
-from torch.autograd import Variable
-
+import sys
 import Data
-
 import importlib
 
 train = importlib.machinery.SourceFileLoader('Train', 'Train.py').load_module()

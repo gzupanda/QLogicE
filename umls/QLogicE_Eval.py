@@ -252,9 +252,9 @@ class ModelEval:
         print(candidateLst)
         candidateLstLen += len(candidateLst)
         scoreLst = self.getBClassSpaceMembershipScore(self.getBClassSpace(c), candidateLst)
-        print(scoreLst)
+        # print(scoreLst)
         rankLst = self.accObj.getRankList(scoreLst)
-        print(rankLst)
+        # print(rankLst)
         rank = numpy.where(rankLst==0)[0][0] + 1
         print('Head Ranking:',rank)
         ranks.append(rank)
@@ -263,9 +263,9 @@ class ModelEval:
         print(candidateLst)
         candidateLstLen += len(candidateLst)
         scoreLst = self.getBClassSpaceMembershipScore(self.getBClassSpace(c), candidateLst)
-        print(scoreLst)
+        # print(scoreLst)
         rankLst = self.accObj.getRankList(scoreLst)
-        print(rankLst)
+        # print(rankLst)
         rank = numpy.where(rankLst==0)[0][0] + 1
         print('Tail Ranking:', rank)
         ranks.append(rank)
