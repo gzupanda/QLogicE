@@ -11,6 +11,7 @@ The code mainly depends on `PyTorch 1.1.0` or later versions and `Python 3` whic
 
 ## Datasets for Evalating the Model
 The datasets used in our experiments are as follows.
+
 |Dataset|Entity|Relation|Train|Valid|Test|Triples|
 |-------|------|--------|-----|-----|----|-------|
 |Kinship|104|26|8,544|1,068|1,074|10,686|
@@ -50,6 +51,7 @@ TransE|0.628|49.36|84.73|0.646|40.56|94.87|0.310|21.72|49.65|0.206|2.79|49.52|0.
 
 ## Performance of the Results
 In this model, the proposed model achieves outstanding results, especially on the challenging datasets such as `FB15k237`, `WN18RR` and `YAGO3-10`.
+
 |Model|FB15k|FB15k|FB15k|WN18|WN18|WN18|FB15k237|FB15k237|FB15k237|WN18RR|WN18RR|WN18RR|YAGO3-10|YAGO3-10|YAGO3-10|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 |MRR| Hits@1| Hits@10| MRR| Hits@1| Hits@10| MRR| Hits@1| Hits@10| MRR| Hits@1| Hits@10| MRR| Hits@1| Hits@10|
